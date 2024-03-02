@@ -3,7 +3,10 @@ const path = require("path");
 
 const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const app = express();
+app.use(express.json());
 
 const dbPath = path.join(__dirname, "covid19IndiaPortal.db");
 
@@ -80,7 +83,7 @@ app.get("/states/", authenticateToken, async (request, response) => {
     statesArray.map((each) => ({
       stateId: each.state_id,
       stateName: each.state_name,
-      population: population,
+      population: each.population,
     }))
   );
 });

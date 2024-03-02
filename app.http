@@ -9,17 +9,17 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3000/sates/
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5Mzc5MzIyfQ.bzyanuPO95AYBR_McaLGK4tQhcuD63MimA-7EKoBwKQ
 
 ###
 
-GET http://localhost:3000/states/:stateId/
-Authorization: Bearer 
+GET http://localhost:3000/states/8/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5Mzc5MzIyfQ.bzyanuPO95AYBR_McaLGK4tQhcuD63MimA-7EKoBwKQ
 
 ###
 POST http://localhost:3000/districts/
 Content-Type: application/json
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5Mzc5MzIyfQ.bzyanuPO95AYBR_McaLGK4tQhcuD63MimA-7EKoBwKQ
 
 {
   "districtName": "Bagalkot",
@@ -31,17 +31,17 @@ Authorization: Bearer
 }
 
 ###
-GET http://localhost:3000/districts/:districtId/
-Authorization: Bearer
+GET http://localhost:3000/districts/322/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5Mzc5MzIyfQ.bzyanuPO95AYBR_McaLGK4tQhcuD63MimA-7EKoBwKQ
 
 ###
-DELETE http://localhost:3000/districts/:districtId/
-Authorization: Bearer
+DELETE http://localhost:3000/districts/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5Mzc5MzIyfQ.bzyanuPO95AYBR_McaLGK4tQhcuD63MimA-7EKoBwKQ
 
 ###
-PUT  http://localhost:3000/districts/:districtId/
+PUT  http://localhost:3000/districts/:1/
 Content-Type: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5Mzc5MzIyfQ.bzyanuPO95AYBR_McaLGK4tQhcuD63MimA-7EKoBwKQ
 
 {
   "districtName": "Nadia",
@@ -54,6 +54,6 @@ Authorization: Bearer
 
 
 ###
-GET http://localhost:3000/states/:stateId/stats/
-Authorization: Bearer
+GET http://localhost:3000/states/1/stats/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5Mzc5MzIyfQ.bzyanuPO95AYBR_McaLGK4tQhcuD63MimA-7EKoBwKQ
 
