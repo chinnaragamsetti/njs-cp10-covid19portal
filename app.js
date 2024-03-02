@@ -35,7 +35,7 @@ app.post("/login/", async (request, response) => {
   const dbUser = await db.get(selectUserQuery);
   if (dbUser === undefined) {
     response.status(400);
-    response.send("Invalid User");
+    response.send("Invalid user");
   } else {
     const isPasswordMatched = await bcrypt.compare(password, dbUser.password);
     if (isPasswordMatched === true) {
@@ -46,7 +46,7 @@ app.post("/login/", async (request, response) => {
       response.send({ jwtToken });
     } else {
       response.status(400);
-      response.send("Invalid Password");
+      response.send("Invalid password");
     }
   }
 });
@@ -59,11 +59,11 @@ const authenticateToken = (request, response, next) => {
   }
   if (jwtToken === undefined) {
     response.status(401);
-    response.send("Invalid Access Token");
+    response.send("Invalid JWT Token");
   } else {
     jwt.verify(jwtToken, "rajkumar@1", async (error, user) => {
       if (error) {
-        response.send("Invalid Access Token");
+        response.send("Invalid JWT Token");
       } else {
         request.username = payload.username;
         next();
