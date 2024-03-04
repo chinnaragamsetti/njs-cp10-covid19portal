@@ -63,6 +63,7 @@ const authenticateToken = (request, response, next) => {
   } else {
     jwt.verify(jwtToken, "rajkumar@1", async (error, user) => {
       if (error) {
+        response.status(401);
         response.send("Invalid JWT Token");
       } else {
         request.username = payload.username;
