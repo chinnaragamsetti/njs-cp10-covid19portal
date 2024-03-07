@@ -61,12 +61,12 @@ const authenticateToken = (request, response, next) => {
     response.status(401);
     response.send("Invalid JWT Token");
   } else {
-    jwt.verify(jwtToken, "rajkumar@1", async (error, user) => {
+    jwt.verify(jwtToken, "rajkumar@1", async (error, payload) => {
       if (error) {
         response.status(401);
         response.send("Invalid JWT Token");
       } else {
-        request.username = user.username;
+        request.username = payload.username;
         next();
       }
     });
@@ -160,7 +160,6 @@ app.delete(
   authenticateToken,
   async (request, response) => {
     const { districtId } = request.params;
-
     const deleteDistrictQuery = `
     DELETE FROM 
     district
