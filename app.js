@@ -89,7 +89,7 @@ app.get("/states/", authenticateToken, async (request, response) => {
   );
 });
 
-app.get("/states/:statesId/", authenticateToken, async (request, response) => {
+app.get("/states/:stateId/", authenticateToken, async (request, response) => {
   const { stateId } = request.params;
   const getStateQuery = `
   SELECT
@@ -100,13 +100,11 @@ WHERE
 state_id='${stateId}';`;
 
   const stateData = await db.all(getStateQuery);
-  response.send(
-    stateData.map((each) => ({
-      stateId: each.state_id,
-      stateName: each.state_name,
-      population: population,
-    }))
-  );
+  response.send({
+    stateId: stateData.state_id,
+    stateName: stateData.state_name,
+    population: stateData.population,
+  });
 });
 
 app.post("/districts/", authenticateToken, async (request, response) => {
@@ -121,7 +119,6 @@ app.post("/districts/", authenticateToken, async (request, response) => {
         ${curved},
         ${active},
         ${deaths}
-        
     )`;
   await db.run(addDistrictQuery);
   response.send("District Successfully Added");

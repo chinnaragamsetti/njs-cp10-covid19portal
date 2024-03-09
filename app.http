@@ -8,18 +8,18 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/sates/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5Mzc5MzIyfQ.bzyanuPO95AYBR_McaLGK4tQhcuD63MimA-7EKoBwKQ
+GET http://localhost:3000/states/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5OTU2MDYwfQ.WsQ2zBD_nWj97g-P7mzNJCexJuRRNUui9riz2E2HMYg
 
 ###
 
-GET http://localhost:3000/states/8/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5Mzc5MzIyfQ.bzyanuPO95AYBR_McaLGK4tQhcuD63MimA-7EKoBwKQ
+GET http://localhost:3000/states/10/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5OTU2MDYwfQ.WsQ2zBD_nWj97g-P7mzNJCexJuRRNUui9riz2E2HMYg
 
 ###
 POST http://localhost:3000/districts/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5Mzc5MzIyfQ.bzyanuPO95AYBR_McaLGK4tQhcuD63MimA-7EKoBwKQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5OTU2MDYwfQ.WsQ2zBD_nWj97g-P7mzNJCexJuRRNUui9riz2E2HMYg
 
 {
   "districtName": "Bagalkot",
@@ -27,21 +27,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNoc
   "cases": 2323,
   "cured": 2000,
   "active": 315,
-  "deaths": 8
+  "deaths": 8,
 }
 
 ###
 GET http://localhost:3000/districts/322/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5Mzc5MzIyfQ.bzyanuPO95AYBR_McaLGK4tQhcuD63MimA-7EKoBwKQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5OTU2MDYwfQ.WsQ2zBD_nWj97g-P7mzNJCexJuRRNUui9riz2E2HMYg
 
 ###
 DELETE http://localhost:3000/districts/1/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5Mzc5MzIyfQ.bzyanuPO95AYBR_McaLGK4tQhcuD63MimA-7EKoBwKQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5OTU2MDYwfQ.WsQ2zBD_nWj97g-P7mzNJCexJuRRNUui9riz2E2HMYg
 
 ###
 PUT  http://localhost:3000/districts/:1/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5Mzc5MzIyfQ.bzyanuPO95AYBR_McaLGK4tQhcuD63MimA-7EKoBwKQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5OTU2MDYwfQ.WsQ2zBD_nWj97g-P7mzNJCexJuRRNUui9riz2E2HMYg
 
 {
   "districtName": "Nadia",
@@ -55,5 +55,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNoc
 
 ###
 GET http://localhost:3000/states/1/stats/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5Mzc5MzIyfQ.bzyanuPO95AYBR_McaLGK4tQhcuD63MimA-7EKoBwKQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNzA5OTU2MDYwfQ.WsQ2zBD_nWj97g-P7mzNJCexJuRRNUui9riz2E2HMYg
 
