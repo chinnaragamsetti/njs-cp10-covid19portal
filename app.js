@@ -110,7 +110,7 @@ state_id='${stateId}';`;
 app.post("/districts/", authenticateToken, async (request, response) => {
   const { districtName, stateId, cases, curved, active, deaths } = request.body;
   const addDistrictQuery = `
-    INSERT INTO 
+    INSERT INTO
     district (district_name,state_id,cases,curved,active,deaths)
     VALUES(
         '${districtName}',
