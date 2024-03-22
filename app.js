@@ -33,6 +33,7 @@ app.post("/login/", async (request, response) => {
   const { username, password } = request.body;
   const selectUserQuery = `SELECT * FROM user WHERE username = '${username}';`;
   const dbUser = await db.get(selectUserQuery);
+  //  console.log(dbUser);
   if (dbUser === undefined) {
     response.status(400);
     response.send("Invalid user");
@@ -53,6 +54,7 @@ app.post("/login/", async (request, response) => {
 
 const authenticateToken = (request, response, next) => {
   let jwtToken;
+  // console.log(request.headers);
   const authHeader = request.headers["authorization"];
   if (authHeader !== undefined) {
     jwtToken = authHeader.split(" ")[1];
@@ -99,7 +101,7 @@ app.get("/states/:stateId/", authenticateToken, async (request, response) => {
 WHERE 
 state_id='${stateId}';`;
 
-  const stateData = await db.all(getStateQuery);
+  const stateData = await db.get(getStateQuery);
   response.send({
     stateId: stateData.state_id,
     stateName: stateData.state_name,
@@ -108,24 +110,32 @@ state_id='${stateId}';`;
 });
 
 app.post("/districts/", authenticateToken, async (request, response) => {
-  const { districtName, stateId, cases, curved, active, deaths } = request.body;
+  const districtDetails = request.body;
+  const {
+    districtName,
+    stateId,
+    cases,
+    cured,
+    active,
+    deaths,
+  } = districtDetails;
   const addDistrictQuery = `
     INSERT INTO
-    district (district_name,state_id,cases,curved,active,deaths)
+    district (district_name,state_id,cases,cured,active,deaths)
     VALUES(
         '${districtName}',
         ${stateId},
         ${cases},
-        ${curved},
+        ${cured},
         ${active},
         ${deaths}
-    )`;
+    );`;
   await db.run(addDistrictQuery);
   response.send("District Successfully Added");
 });
 
 app.get(
-  "/districts/:district/",
+  "/districts/:districtId/",
   authenticateToken,
   async (request, response) => {
     const { districtId } = request.params;
@@ -137,14 +147,14 @@ app.get(
     WHERE 
     state_id='${districtId}';`;
 
-    const districtData = await db.all(getDistrictQuery);
+    const districtData = await db.get(getDistrictQuery);
     response.send(
       districtData.map((each) => ({
         districtId: each.district_id,
         districtName: each.district_name,
         stateId: each.state_id,
         cases: each.cases,
-        curved: each.curved,
+        cured: each.cured,
         active: each.active,
         deaths: each.deaths,
       }))
@@ -153,7 +163,7 @@ app.get(
 );
 
 app.delete(
-  "/districts/districtId/",
+  "/districts/:districtId/",
   authenticateToken,
   async (request, response) => {
     const { districtId } = request.params;
@@ -177,7 +187,7 @@ app.put(
       districtName,
       stateId,
       cases,
-      curved,
+      cured,
       active,
       deaths,
     } = request.body;
@@ -187,7 +197,7 @@ app.put(
     district_name='${districtName}',
     state_id=${stateId},
     cases=${cases},
-    curved=${curved},
+    cured=${cured},
     active=${active},
     deaths=${deaths}
     WHERE 
@@ -206,7 +216,7 @@ app.get(
     const stateStatsQuery = `
     SELECT
     Sum(total_cases) as totalCases,
-    SUM(curved) as curved,
+    SUM(cured) as cured,
     SUM(active) as active,
     SUM(deaths) as deaths
     FROM
@@ -217,7 +227,7 @@ app.get(
     response.send(
       statsResponse.map((each) => ({
         totalCases: each.totalCases,
-        totalCurved: each.curved,
+        totalCured: each.cured,
         totalAcitve: each.active,
         totalDeaths: each.deaths,
       }))
