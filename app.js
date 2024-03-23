@@ -99,7 +99,7 @@ app.get("/states/:stateId/", authenticateToken, async (request, response) => {
   FROM
     state
 WHERE 
-state_id='${stateId}';`;
+state_id=${stateId};`;
 
   const stateData = await db.get(getStateQuery);
   response.send({
@@ -145,7 +145,7 @@ app.get(
   FROM
     district
     WHERE 
-    state_id='${districtId}';`;
+    state_id=${districtId};`;
 
     const districtData = await db.get(getDistrictQuery);
     response.send(
@@ -171,7 +171,7 @@ app.delete(
     DELETE FROM 
     district
     WHERE 
-    district_id='${districtId}';
+    district_id=${districtId};
     `;
     await db.run(deleteDistrictQuery);
     response.send("District Removed");
@@ -222,7 +222,7 @@ app.get(
     FROM
     state INNER JOIN district 
     WHERE 
-    state_id='${stateId}';`;
+    state_id=${stateId};`;
     const statsResponse = await db.get(stateStatsQuery);
     response.send(
       statsResponse.map((each) => ({
