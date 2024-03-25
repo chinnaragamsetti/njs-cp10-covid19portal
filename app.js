@@ -212,23 +212,21 @@ app.get(
     const { stateId } = request.params;
     const stateStatsQuery = `
     SELECT
-    Sum(total_cases) as totalCases,
+    SUM(cases) as total_cases,
     SUM(cured) as cured,
     SUM(active) as active,
-    SUM(deaths) as deaths
+    SUM(deaths)as deaths,
     FROM
-    state INNER JOIN district 
+    district 
     WHERE 
     state_id=${stateId};`;
     const statsResponse = await db.get(stateStatsQuery);
-    response.send(
-      statsResponse.map((each) => ({
-        totalCases: each.totalCases,
-        totalCured: each.cured,
-        totalAcitve: each.active,
-        totalDeaths: each.deaths,
-      }))
-    );
+    response.send({
+      totalCases: statsResponse.total_cases,
+      totalCured: statsResponse.cured,
+      totalAcitve: statsResponse.active,
+      totalDeaths: statsResponse.deaths,
+    });
   }
 );
 
