@@ -145,20 +145,18 @@ app.get(
   FROM
     district
     WHERE 
-    state_id=${districtId};`;
+    district_id=${districtId};`;
 
     const districtData = await db.get(getDistrictQuery);
-    response.send(
-      districtData.map((each) => ({
-        districtId: each.district_id,
-        districtName: each.district_name,
-        stateId: each.state_id,
-        cases: each.cases,
-        cured: each.cured,
-        active: each.active,
-        deaths: each.deaths,
-      }))
-    );
+    response.send({
+      districtId: districtData.district_id,
+      districtName: districtData.district_name,
+      stateId: districtData.state_id,
+      cases: districtData.cases,
+      cured: districtData.cured,
+      active: districtData.active,
+      deaths: districtData.deaths,
+    });
   }
 );
 
@@ -202,14 +200,13 @@ app.put(
     deaths=${deaths}
     WHERE 
     district_id=${districtId};`;
-
     await db.run(updateDistrictQuery);
     response.send("District Details Updated");
   }
 );
 
 app.get(
-  "states/:stateId/stats/",
+  "/states/:stateId/stats/",
   authenticateToken,
   async (request, response) => {
     const { stateId } = request.params;
