@@ -215,7 +215,7 @@ app.get(
     SUM(cases) as total_cases,
     SUM(cured) as cured,
     SUM(active) as active,
-    SUM(deaths)as deaths,
+    SUM(deaths)as deaths
     FROM
     district 
     WHERE 
@@ -224,7 +224,7 @@ app.get(
     response.send({
       totalCases: statsResponse.total_cases,
       totalCured: statsResponse.cured,
-      totalAcitve: statsResponse.active,
+      totalActive: statsResponse.active,
       totalDeaths: statsResponse.deaths,
     });
   }
